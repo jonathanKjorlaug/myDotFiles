@@ -1,0 +1,59 @@
+-- Map
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
+-- Install lazy package manager
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- Noice settings
+vim.o.hlsearch = false
+vim.wo.number = true
+vim.o.mouse = 'a'
+vim.o.clipboard = 'unnamedplus'
+vim.o.breakindent = true
+vim.o.undofile = true
+
+vim.o.ignorecalse = true
+vim.o.smartcase = true
+
+vim.wo.signcolumn = 'yes'
+
+vim.o.updatetime = 250
+vim.o.timeoutlen = 300
+
+vim.o.termguicolors = true
+
+vim.o.cursorline = true
+
+vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
+vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
+vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
+vim.o.shiftwidth = 4-- Number of spaces inserted when indenting
+vim.o.autoindent = true
+ 
+
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
+})
+
+-- Keymappings
+
+vim.keymap.set("n", "<leader>n", ":Neotree<CR>")
+
+require("lazy").setup({{import = "plugins"}, {import = "plugins/lsp"}})
