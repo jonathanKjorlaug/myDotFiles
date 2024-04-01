@@ -4,11 +4,11 @@ CURRENT_PATH=~/.config/personalConfig
 # Installing packages
 
 if [[ -n "$(command -v dnf)" ]]; then
-	sudo dnf install -y sl
-	sudo dnf install -y neovim
-	sudo dnf install -y neofetch
-	sudo dnf install -y zsh
-	sudo dnf install -y eza
+	sudo dnf install -y sl \
+        neovim \
+        zsh \
+        eza \
+        alacritty
 fi 
 
 if [[ -n "$(command -v apt)" ]]; then
@@ -43,7 +43,8 @@ if [[ -n "$(command -v pacman)$" ]]; then
         eza \
         tmux \
         ttf-meslo-nerd \
-        npm
+        npm \
+        alacritty
 fi
 
 if [ -z $(which starship) ]; then
@@ -68,11 +69,13 @@ ln -fs $CURRENT_PATH/neofetch neofetch
 ln -fs $CURRENT_PATH/nvim nvim
 ln -fs $CURRENT_PATH/espanso espanso
 ln -fs $CURRENT_PATH/tmux tmux
+ln -fs $CURRENT_PATH/alacritty alacritty
 
 rm -r neofetch/neofetch
 rm -r nvim/nvim
 rm -r espanso/espanso
 rm -r tmux/tmux
+rm -r alacritty/alacritty
 
 cd ~
 ln -fs $CURRENT_PATH/.zsh .zsh
