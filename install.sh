@@ -44,7 +44,15 @@ if [[ -n "$(command -v pacman)$" ]]; then
         tmux \
         ttf-meslo-nerd \
         npm \
-        alacritty
+        alacritty \
+        fzf \
+        tree-sitter \
+        texlive-basic \
+        ripgrep \
+        fd \
+        lazygit \
+        wget \
+        cmake
 fi
 
 if [ -z $(which starship) ]; then
@@ -80,3 +88,5 @@ rm -r alacritty/alacritty
 cd ~
 ln -fs $CURRENT_PATH/.zsh .zsh
 ln -fs $CURRENT_PATH/.zsh/.zshrc .zshrc
+
+rm -r .zsh/.zsh
