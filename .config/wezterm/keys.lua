@@ -3,19 +3,11 @@ local act = require("wezterm").action
 
 local module = {}
 
-local function tabKeys(keys)
-	for i = 1, 9 do
-		table.insert(keys, {
-			key = tostring(i),
-			mods = "CTRL",
-			action = act.ActivateTab(i - 1),
-		})
-	end
-end
-
 function module.activateBindings(config, params)
 	local options = {
 		tabkeys = true,
+		splits = true,
+		vimSplitNavigation = true,
 	}
 
 	for i, line in ipairs(params) do
@@ -26,7 +18,58 @@ function module.activateBindings(config, params)
 	local keys = config.keys
 
 	if options.tabkeys then
-		tabKeys(keys)
+		for i = 1, 9 do
+			table.insert(keys, {
+				key = tostring(i),
+				mods = "CTRL",
+				action = act.ActivateTab(i - 1),
+			})
+			table.insert(keys, {
+				key = tostring(i),
+				mods = "CTRL|ALT",
+				action = act.MoveTab(i - 1),
+			})
+		end
+	end
+
+	if options.splits then
+		table.insert(keys, {
+			key = "!",
+			mods = "CTRL|SHIFT",
+			action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+		})
+
+		table.insert(keys, {
+			key = '"',
+			mods = "CTRL|SHIFT",
+			action = act.SplitVertical({ domain = "CurrentPaneDomain" }),
+		})
+	end
+
+	if options.vimSplitNavigation then
+		table.insert(keys, {
+			key = "h",
+			mods = "CTRL",
+			action = act.ActivatePaneDirection("Left"),
+		})
+
+		table.insert(keys, {
+			key = "j",
+			mods = "CTRL",
+			action = act.ActivatePaneDirection("Down"),
+		})
+
+		table.insert(keys, {
+			key = "k",
+			mods = "CTRL",
+			action = act.ActivatePaneDirection("Up"),
+		})
+
+		table.insert(keys, {
+			key = "l",
+			mods = "CTRL",
+			action = act.ActivatePaneDirection("Right"),
+		})
 	end
 end
 

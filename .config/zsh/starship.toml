@@ -7,6 +7,45 @@ add_newline = true
 format = '$all$directory$character'
 
 # Disable the package module, hiding it from the prompt completely
+
+[git_branch]
+symbol = ""
+
+[aws]
+disabled = true
+
 [package]
 disabled = true
 
+[python]
+disabled = true
+
+[golang]
+disabled = true
+
+[c]
+disabled = true
+
+[cmake]
+disabled = true
+
+[conda]
+disabled = true
+
+[dart]
+disabled = true
+
+[java]
+disabled = true
+
+[meson]
+disabled = true
+
+[rlang]
+disabled = true
+
+[rust]
+disabled = true
+
+[swift]
+disabled = true

@@ -5,7 +5,7 @@ local config = wezterm.config_builder()
 config.color_scheme = "Tokyo Night Storm"
 config.font = wezterm.font("MesloLGM Nerd Font")
 
-config.window_decorations = "NONE"
+config.window_decorations = "RESIZE"
 require("keys").activateBindings(config, {})
 
 -- Tab bar:

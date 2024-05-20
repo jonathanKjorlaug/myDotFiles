@@ -1,3 +1,5 @@
+fastfetch
+
 # Zinit init
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -26,17 +28,11 @@ setopt hist_find_no_dups
 bindkey -v
 export EDITOR='nvim'
 
-# Tmux
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  # exec tmux -u
-fi
-
-#Starship
+# Starship
 export STARSHIP_CONFIG=~/.config/zsh/starship.toml
 eval "$(starship init zsh)"
 
 #Plugins
-
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
@@ -66,10 +62,12 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 --color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a"
 
 #Final alias
-fastfetch
 alias ls="eza --group-directories-first"
 alias vim=nvim
 alias ccompile="meson compile -C builddir && ./builddir/program"
 
 # Shell integrations
 eval "$(fzf --zsh)"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
