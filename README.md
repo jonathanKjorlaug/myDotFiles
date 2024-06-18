@@ -1,13 +1,19 @@
-### My (public) dotfiles!
+## Personal dotfiles for Jonathan Kjørlaug
 
-This is a (somewhat) up-to-date version of my current dotfiles! Feel free to roast my formatting and other mistakes. As of now, they are designed to work with GNU stow. To do so, one must first install GNU stow, for instance by using:
+If you see this, either you're me, or you've hacked into my github or something. In the latter case, good for you I guess, not that there's all that much useful stuff here (Unless you're just happening to be a year after me in Physics and Maths, then you might be able to find some (subpar) kok)
 
-    sudo pacman -S stow git
+Anyways, there are two dependencies, git and GNU stow. Make sure to install them before running install.sh, which should do the rest of the job for you. For pacman run the following command:
 
-Yes, I use arch btw.
+    sudo pacman -S stow git github-cli
 
-After doing this, clone the repo into your home directory, enter the repos directory, and run the command:
+The last was to make your life slightly better by using the github-cli to clone the repo. Once you've installed the neccessary dependencies, first clone the repo using the following code:
 
-    stow . --adopt
+    cd 
+    gh auth login
+    gh repo clone .dotFiles 
 
-There are some required dependencies for this setup to work properly, amongst them neovim, zsh, fastfetch and wezterm.
+Finally, run the install script:
+
+    .dotFiles/install.sh
+
+You may thank me for the slight amount of work I've done in order to write this README

@@ -1,0 +1,31 @@
+dotfiles_dir = "dotfiles"
+
+[settings]
+vars = ["vars/info.toml", "vars/colours.toml"]
+
+posthooks = []
+[settings.dots]
+
+espanso = { source = "espanso", target = ".config/espanso" }
+fastfetch = { source = "fastfetch", target = ".config/fastfetch" }
+gitconfig = { source = "gitconfig", target = ".gitconfig" }
+nvim = { source = "nvim", target = ".config/nvim" }
+wezterm = { source = "wezterm", target = ".config/wezterm" }
+starship = { source = "zsh/starship.toml", target = ".config/starship.toml" }
+zshrc = { source = "zsh/zshrc", target = ".zshrc", vars = "zsh/vars.toml" }
+
+[profiles.hyprland]
+
+posthooks = [
+    "killall waybar | :",
+    "hyprctl dispatch exec waybar | :",
+    "swaync-client --reload-config",
+    "swaync-client --reload-css | : ",
+]
+
+[profiles.hyprland.dots]
+
+zshrc.vars = "zsh/hyprland_vars.toml"
+hypr = { source = "hypr", target = ".config/hypr" }
+waybar = { source = "waybar", target = ".config/waybar" }
+swaync = { source = "swaync", target = ".config/swaync" }
