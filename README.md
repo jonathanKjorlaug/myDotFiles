@@ -1,19 +1,16 @@
-## Personal dotfiles for Jonathan Kjørlaug
+### My (public) dotfiles!
 
-If you see this, either you're me, or you've hacked into my github or something. In the latter case, good for you I guess, not that there's all that much useful stuff here (Unless you're just happening to be a year after me in Physics and Maths, then you might be able to find some (subpar) kok)
+This is a (somewhat) up-to-date version of my current dotfiles! Feel free to roast my formatting and other mistakes. As of now, they're based on using the best named dotfiles manager: Toml Bombadil. There's an install script included that's written for Arch Linux (btw) that should work if using arch. To do so, just clone the repo into your home directory, enter it, and run
 
-Anyways, there are two dependencies, git and GNU stow. Make sure to install them before running install.sh, which should do the rest of the job for you. For pacman run the following command:
+    ./install.sh
 
-    sudo pacman -S stow git github-cli
+If you aren't using arch, or don't want to use the install script, just install Toml Bombadil through your package manager, install the packages you deem necessary, do the steps as above, but instead of calling the install script, run:
 
-The last was to make your life slightly better by using the github-cli to clone the repo. Once you've installed the neccessary dependencies, first clone the repo using the following code:
+    bombadil install
+    bombadil link
 
-    cd 
-    gh auth login
-    gh repo clone .dotFiles 
+As of writing, I am using wezterm as my terminal emulator, zsh as my shell, neovim as my main* editor, and most importantly of all: Fastfetch to make sure everyone knows I'm using Arch! (Because why else would it exist?!)
 
-Finally, run the install script:
+I am also exploiting the fact that I am currently on a summer break to experiment with hyprland as a tiling window manager. If you want to try out my current configuration, either copy the config files directly, or use the hyprland profile I've made for Toml Bombadil by running:
 
-    .dotFiles/install.sh
-
-You may thank me for the slight amount of work I've done in order to write this README
+    bombadil link -p hyprland
