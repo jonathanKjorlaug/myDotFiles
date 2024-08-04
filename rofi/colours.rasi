@@ -1,0 +1,8 @@
+* {
+    background:     {{bg_primary}};
+    background-alt: {{bg_secondary}};
+    foreground:     #FFFFFFFF;
+    selected:       {{bg_highlight}};
+    active:         #98C379FF;
+    urgent:         #E06C75FF;
+}

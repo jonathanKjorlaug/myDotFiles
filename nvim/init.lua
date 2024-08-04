@@ -1,6 +1,7 @@
--- Map
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-require 'keymaps'
-require 'lazySetup'
-require 'options'
-require 'extraFiletypes'
+require "config.lazy"
+require "config.options"
+require "config.keymaps"
+require "config.filetypes"

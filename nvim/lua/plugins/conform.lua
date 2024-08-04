@@ -1,32 +1,29 @@
 return {
-    'stevearc/conform.nvim',
-    opts = {},
-    event = { 'BufReadPre', 'BufNewFile' },
-    config = function()
-        local conform = require 'conform'
+    "stevearc/conform.nvim",
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+    keys = {
+        {
+            "<leader>fn>",
+            function()
+                require("conform").format { async = false, timeout_ms = 500 }
+            end,
+            desc = "Format file now",
+        },
+    },
+    opts = {
+        formatters_by_ft = {
+            lua = { "stylua" },
+            javascript = { "prettier" },
+            typescript = { "prettier" },
+        },
 
-        conform.setup {
-            formatters_by_ft = {
-                lua = { 'stylua' },
-                -- Conform will run multiple formatters sequentially
-                python = { 'isort', 'black' },
-                -- Use a sub-list to run only the first available formatter
-                cpp = { 'clang_format' },
+        format_on_save = { timeout_ms = 750, lsp_format = "fallback" },
+
+        formatters = {
+            stylua = {
+                -- args = { '-f /home/jonathankjorlaug/stylua.toml', "$FILENAME" },
             },
-            format_on_save = {
-                enable = false,
-                timeout_ms = 500,
-                lsp_fallback = true,
-                async = false,
-            },
-        }
-
-        vim.keymap.set('n', '<leader>fn', function()
-            conform.format {
-
-                async = false,
-                timeout_ms = 500,
-            }
-        end, { desc = 'Format file now' })
-    end,
+        },
+    },
 }

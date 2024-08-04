@@ -1,35 +1,28 @@
 return {
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
     config = function()
-        local configs = require 'nvim-treesitter.configs'
-
-        configs.setup {
+        require("nvim-treesitter.configs").setup {
             ensure_installed = {
-                'c',
-                'lua',
-                'vim',
-                'vimdoc',
-                'query',
-                'bibtex',
-                'bash',
-                'cpp',
-                'csv',
-                'dockerfile',
-                'latex',
-                'markdown',
-                'markdown_inline',
-                'python',
-                'regex',
-                'toml',
-                'hyprlang',
+                "lua",
+                "vim",
+                "vimdoc",
+                "hyprlang",
+                "bibtex",
+                "latex",
+                "cpp",
+                "csv",
+                "dockerfile",
+                "markdown",
+                "markdown_inline",
+                "python",
+                "regex",
+                "toml",
             },
+            auto_install = true,
 
-            sync_install = false,
             highlight = { enable = true },
             indent = { enable = true },
-
-            auto_install = true,
         }
     end,
 }
