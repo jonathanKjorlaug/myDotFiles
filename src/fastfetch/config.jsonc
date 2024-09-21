@@ -1,0 +1,110 @@
+{
+    "logo": {
+        "padding": {
+            "top": 1
+        }
+    },
+    "display": {
+        "separator": "",
+        "key": {
+            "width": 15
+        },
+        "disableLineWrap": true
+    },
+    "modules": [
+        {
+            "key": "╭───────────╮",
+            "type": "custom"
+        },
+        {
+            // draw borders first to make colors of left and right border consistant
+            "key": "│           │\u001b[11D\u001b[31m user",
+            "type": "title",
+            "format": "{1}"
+        },
+        {
+            "key": "│           │\u001b[11D\u001b[32m󰇅 hname",
+            "type": "title",
+            "format": "{2}"
+        },
+        {
+            "key": "│           │\u001b[11D\u001b[33m󰅐 uptime",
+            "type": "uptime"
+        },
+        {
+            "key": "│           │\u001b[11D\u001b[34m󰟾 distro",
+            "type": "os",
+            "format": "{3}"
+        },
+        {
+            "key": "│           │\u001b[11D\u001b[35m kernel",
+            "type": "kernel",
+            "format": "{2}"
+        },
+        {
+            "key": "│           │\u001b[11D\u001b[36m󰇄 DE",
+            "type": "de"
+        },
+        {
+            "key": "│           │\u001b[11D\u001b[31m term",
+            "type": "terminal",
+            "format": "{5}"
+        },
+        {
+            "key": "│           │\u001b[11D\u001b[32m shell",
+            "type": "shell"
+        },
+        {
+            "key": "│           │\u001b[11D\u001b[33m editor",
+            "type": "editor"
+        },
+        {
+            "key": "│           │\u001b[11D\u001b[34m󰻠 cpu",
+            "type": "cpu",
+            "format": "{1}"
+        },
+        {
+            "key": "│           │\u001b[11D\u001b[35m󰍛 gpu",
+            "type": "gpu",
+            "format": "{1}"
+        },
+        {
+            "key": "│           │\u001b[11D\u001b[36m󰉉 disk",
+            "type": "disk",
+            "folders": "/",
+            "format": "{1} ({3})"
+        },
+        {
+            "key": "│           │\u001b[11D\u001b[31m memory",
+            "type": "memory",
+            "format": "{1} ({3})"
+        },
+        {
+            "key": "│           │\u001b[11D\u001b[32m󰏖 pkgs",
+            "type": "packages",
+            "format": "{1} (pacman)"
+        },
+        {
+            "key": "│           │\u001b[11D\u001b[33m󰍹 display",
+            "type": "display",
+            "format": "{1}x{2}p @ {3}Hz"
+        },
+        {
+            "key": "│           │\u001b[11D\u001b[34m battery",
+            "type": "battery"
+        },
+        {
+            "key": "├───────────┤",
+            "type": "custom"
+        },
+        {
+            "key": "│           │\u001b[11D\u001b[m colours",
+            "type": "colors",
+            "symbol": "circle"
+        },
+        {
+            "key": "╰───────────╯",
+            "type": "custom"
+        }
+    ]
+}

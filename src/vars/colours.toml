@@ -1,0 +1,6 @@
+bg_primary = "#141C26"
+bg_secondary = "#282B31"
+bg_secondary_notext = "#89ABD5"
+bg_highlight = "#61AFEF"
+
+text_colour = "#FFFFFF"

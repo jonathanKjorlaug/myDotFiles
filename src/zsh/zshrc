@@ -1,0 +1,78 @@
+
+# Zinit init
+
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
+
+#Compinit
+autoload -Uz compinit
+compinit
+
+# History
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+# Vim
+# bindkey -v
+export EDITOR='nvim'
+
+# Starship
+export STARSHIP_CONFIG=~/.config/starship.toml
+eval "$(starship init zsh)"
+
+#Plugins
+zinit light zdharma-continuum/fast-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
+
+# Proper colours
+eval "$(dircolors -b)"
+
+# Completion styling
+zmodload zsh/complist
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'l:|=* r:|=*'
+zstyle :compinstall filename '/home/jonathankjorlaug/.zshrc'
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:rm:*' fzf-preview 'eza -1 --color=always $realpath'
+zstyle ':fzf-tab:*' fzf-bindings 'tab:accept'
+
+# fzf theming
+
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+--color=fg:#c0caf5,bg:#24283b,hl:#ff9e64 \
+--color=fg+:#c0caf5,bg+:#292e42,hl+:#ff9e64 \
+--color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff \
+--color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a"
+
+export FZF_DEFAULT_OPTS='--bind=ctrl-k:up,ctrl-j:down'
+
+#Final alias
+alias ls="eza --group-directories-first"
+alias vim=nvim
+alias ccompile="meson compile -C builddir && ./builddir/program"
+alias bl="{{link_command}}"
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit -m"
+alias icat="kitten icat"
+
+# Shell integrations
+eval "$(fzf --zsh)"
+
+fastfetch
