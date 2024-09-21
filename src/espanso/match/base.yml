@@ -34,7 +34,7 @@ matches:
 
   # Print the current date
   - trigger: ":date"
-    replace: "{{mydate}}"
+    replace: "mydate"
     vars:
       - name: mydate
         type: date
@@ -43,7 +43,7 @@ matches:
 
   # Print the output of a shell command
   - trigger: ":shell"
-    replace: "{{output}}"
+    replace: "output"
     vars:
       - name: output
         type: shell

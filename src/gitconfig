@@ -5,8 +5,8 @@
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
 [user]
-	email = "{{email}}"
-	name = "{{sname}}"
+	email = "jonathan@kjorlaug.no"
+	name = "jonathankjorlaug"
 [init]
 	defaultBranch = main
 [pull]
