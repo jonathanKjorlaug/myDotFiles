@@ -1,0 +1,38 @@
+@use "sass:color";
+@use "../colours.scss" as *;
+
+.quicksettings {
+    all: unset;
+    min-width: 300px;
+    background-color: $bg;
+    border-radius: $button-radius;
+
+    margin: 5px 5px;
+    padding: 15px;
+
+    .QSRow {
+        padding-bottom: 15px;
+        all: unset;
+    }
+
+    .Battery {
+        background-color: $contrast;
+        border-radius: $button-radius;
+        padding: 2px 10px;
+    }
+
+    .PowerButton {
+        all: unset;
+        background-color: $contrast;
+        border-radius: $button-radius;
+        margin: 2px;
+        padding: 10px;
+
+        &:hover {
+            background-color: $hover;
+        }
+        &:active {
+            background-color: $click;
+        }
+    }
+}

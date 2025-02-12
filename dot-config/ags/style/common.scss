@@ -1,0 +1,103 @@
+@use "sass:color";
+@use "./colours.scss" as *;
+
+* {
+    /* font-family: "Google Sans"; */
+
+    font-family: "Meslo LGS Nerd Font";
+    font-size: 1.1rem;
+    font-weight: 600;
+
+    color: $fg;
+}
+window {
+    background-color: transparent;
+}
+
+.window-content {
+    all: unset;
+    min-width: 300px;
+    background-color: $bg;
+    border-radius: $button-radius;
+
+    margin: 5px 5px;
+    padding: 15px;
+}
+
+@mixin slider(
+    $width: 0.7em,
+    $slider-width: 0.5em,
+    $slider: true,
+    $focusable: true,
+    $radius: $button-radius
+) {
+    * {
+        all: unset;
+    }
+
+    trough {
+        transition: $transition;
+        border-radius: $radius;
+        border: $border;
+        background-color: $widget-bg;
+        min-height: $width;
+        min-width: $width;
+
+        highlight,
+        progress {
+            border-radius: max($radius - $border-width, 0);
+            min-height: $width;
+            min-width: $width;
+        }
+    }
+
+    slider {
+        box-shadow: none;
+        background-color: transparent;
+        border: $border-width solid transparent;
+        transition: $transition;
+        border-radius: $radius;
+        min-height: $width;
+        min-width: $width;
+        margin: -$slider-width;
+    }
+
+    &:hover {
+        trough {
+            background-color: $hover-bg;
+        }
+
+        slider {
+            @if $slider {
+                background-color: $fg;
+                border-color: $border-color;
+
+                @if $shadows {
+                    box-shadow: 0 0 3px 0 $shadow-color;
+                }
+            }
+        }
+    }
+
+    &:disabled {
+        highlight,
+        progress {
+            background-color: transparentize($fg, 0.4);
+            background-image: none;
+        }
+    }
+
+    @if $focusable {
+        trough:focus {
+            background-color: $hover-bg;
+            box-shadow: inset 0 0 0 $border-width $primary-bg;
+
+            slider {
+                @if $slider {
+                    background-color: $fg;
+                    box-shadow: inset 0 0 0 $border-width $primary-bg;
+                }
+            }
+        }
+    }
+}

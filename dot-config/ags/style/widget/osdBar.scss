@@ -1,0 +1,35 @@
+@use "../colours.scss" as *;
+
+.OsdContainer {
+    background-color: $bg;
+    border-radius: calc($radius * 2);
+    padding: 8px;
+
+    .OsdIcon {
+        color: $fg;
+        font-size: 1.5rem;
+        padding: 8px;
+    }
+}
+
+.OsdPercentageContainer {
+    border-radius: calc($radius * 2);
+    min-height: 20rem;
+    background-color: $contrast;
+
+    * {
+        all: unset;
+    }
+
+    levelbar {
+        min-width: 3rem;
+        background-color: $contrast;
+
+        border-radius: calc($radius * 2);
+    }
+
+    levelbar block.filled {
+        background-color: $accent;
+        border-radius: calc($radius * 2);
+    }
+}

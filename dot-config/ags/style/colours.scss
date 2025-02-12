@@ -1,0 +1,12 @@
+@use "sass:color";
+
+$bg: #212223;
+$fg: #f1f1f1;
+$accent: #378df7;
+
+$contrast: color.adjust($fg, $alpha: -0.9);
+$hover: color.adjust($fg, $alpha: -0.8);
+$click: color.adjust($fg, $alpha: -0.7);
+
+$radius: 7px;
+$button-radius: 15px;
