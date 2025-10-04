@@ -1,35 +1,30 @@
 {
-  "temp": {
-    "prefix": "tmpl",
-    "body": [
-      "\\documentclass[a4paper]{article}",
-      "\\usepackage[nynorsk]{babel}",
-      "\\usepackage[T1]{fontenc}",
-      "\\usepackage{graphicx}",
-      "\\usepackage{amsmath}",
-      "\\usepackage{amsfonts}",
-      "\\usepackage{microtype}",
-      "\\usepackage[utf8]{inputenc}",
-      "",
-      "\\usepackage{hyperref}",
-      "\\hypersetup{",
-      "    colorlinks,",
-      "    citecolor=black,",
-      "    filecolor=black,",
-      "    linkcolor=black,",
-      "    urlcolor=black",
-      "}",
-      "",
-      "\\begin{document}",
-      "",
-      "$0",
-      "",
-      "\\end{document}"
-    ]
-  },
-  "align*": {
-    "prefix": "ali",
-    "body": ["\\begin{align*}", "\t$0", "\\end{align}"],
-    "description": "Basic align environment"
-  }
+    "temp": {
+        "prefix": "tmpl",
+        "body": [
+            "\\documentclass[a4paper]{article}",
+            "\\usepackage[nynorsk]{babel}",
+            "\\usepackage[T1]{fontenc}",
+            "\\usepackage{graphicx}",
+            "\\usepackage{amsmath}",
+            "\\usepackage{amsfonts}",
+            "\\usepackage{microtype}",
+            "\\usepackage[utf8]{inputenc}",
+            "",
+            "\\usepackage{hyperref}",
+            "\\hypersetup{",
+            "    colorlinks,",
+            "    citecolor=black,",
+            "    filecolor=black,",
+            "    linkcolor=black,",
+            "    urlcolor=black",
+            "}",
+            "",
+            "\\begin{document}",
+            "",
+            "$0",
+            "",
+            "\\end{document}"
+        ]
+    }
 }

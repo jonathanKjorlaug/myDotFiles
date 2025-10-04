@@ -1,8 +1,6 @@
 import { Astal, Gtk, Gdk, App } from "astal/gtk4";
-import { Variable, GLib, bind } from "astal";
+import { Variable, GLib, bind, execAsync } from "astal";
 import PanelButton from "../common/PanelButton";
-
-import { CALENDAR_MENU_NAME as WINDOW_NAME } from "../CalendarMenu/CalendarMenu";
 
 export default function ({ format = "%a %b %d %H:%M" }) {
     const time = Variable<string>("").poll(
@@ -12,9 +10,9 @@ export default function ({ format = "%a %b %d %H:%M" }) {
 
     return (
         <PanelButton
-            window={WINDOW_NAME}
+            window={"null"}
             onClicked={() => {
-                App.toggle_window(WINDOW_NAME);
+                execAsync("swaync-client -t -sw");
             }}
             child=<label
                 cssClasses={["Time"]}

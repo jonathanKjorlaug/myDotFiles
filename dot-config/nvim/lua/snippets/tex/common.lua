@@ -9,7 +9,7 @@ return {
         <>
     \end{align*}
     ]],
-            { i(1) },
+            { i(0) },
             { delimiters = "<>" }
         )
     ),
@@ -53,7 +53,7 @@ return {
             <>
         \end{<>}
         ]],
-            { i(1), i(2), rep(1) },
+            { i(1), i(0), rep(1) },
             { delimiters = "<>" }
         )
     ),
@@ -69,6 +69,7 @@ return {
             { delimiters = "<>" }
         )
     ),
+    s({ trig = "ie", desc = "An inline math environment" }, fmta("$<>$<>", { i(1), i(0) })),
     s(
         { trig = "figure", desc = "A basic figure" },
         fmta(

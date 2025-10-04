@@ -6,7 +6,7 @@ return {
         {
             "<leader>fn",
             function()
-                require("conform").format { async = false, timeout_ms = 500 }
+                require("conform").format { async = false, timeout_ms = 10000 }
             end,
             desc = "Format file now",
         },

@@ -21,16 +21,10 @@ export default function audioButton() {
     const wifi = bind(network, "wifi");
 
     return (
-        <PanelButton
-            window={WINDOW_NAME}
-            onClicked={() => {
-                App.toggle_window(WINDOW_NAME);
-            }}
-            child=<box cssClasses={["audioButton"]}>
-                <box>
-                    <image iconName={bind(speaker, "volumeIcon")} />
-                </box>
+        <box cssClasses={["audioButton"]}>
+            <box>
+                <image iconName={bind(speaker, "volumeIcon")} />
             </box>
-        />
+        </box>
     );
 }

@@ -50,6 +50,15 @@ return {
                     { section = "startup" },
                 },
             },
+            -- indent = {
+            --     only_scope = true, -- only show indent guides of the scope
+            --     animate = {
+            --         enabled = false,
+            --     },
+            -- },
+
+            explorer = {},
+            lazygit = {},
         }
 
         vim.keymap.set("n", "<leader><leader>", function()
@@ -58,5 +67,9 @@ return {
         vim.keymap.set("n", "<leader>n", function()
             require("snacks").notifier.show_history()
         end, { desc = "View notifications" })
+
+        vim.keymap.set("n", "<leader>b", function()
+            require("snacks").explorer.open()
+        end, { desc = "Open explorer" })
     end,
 }

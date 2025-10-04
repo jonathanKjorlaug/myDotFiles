@@ -21,8 +21,9 @@ vim.o.wrap = false
 vim.o.cursorline = true
 
 -- Fold
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.wo.foldmethod = "indent"
+-- vim.wo.foldmethod = "expr"
+vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldlevel = 2
 
 -- Spell

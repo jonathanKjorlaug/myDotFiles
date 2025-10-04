@@ -2,8 +2,6 @@ import { App } from "astal/gtk4";
 import style from "./style/style.scss";
 import Bar from "./widget/Bar/Bar";
 import Quicksettings from "./widget/Quicksettings/Quicksettings";
-import CalendarMenu from "./widget/CalendarMenu/CalendarMenu";
-import NotificationPopup from "./widget/Notification/NotificationPopup";
 import Volume from "./widget/osd/Volume";
 import Brightness from "./widget/osd/Brightness";
 
@@ -17,8 +15,7 @@ App.start({
     main: () => [
         App.get_monitors().map(Bar),
         App.get_monitors().map(Quicksettings),
-        App.get_monitors().map(CalendarMenu),
-        App.get_monitors().map(NotificationPopup),
+        // App.get_monitors().map(NotificationPopup),
         App.get_monitors().map(Volume),
         App.get_monitors().map(Brightness),
     ],

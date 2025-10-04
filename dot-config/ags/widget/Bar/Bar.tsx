@@ -3,9 +3,6 @@ import { Astal, Gtk, Gdk } from "astal/gtk4";
 import Workspaces from "./Workspaces";
 import SystemIndicators from "./SystemIndicators";
 import Time from "./Time";
-import NetworkButton from "./network";
-import BatteryButton from "./battery";
-import AudioButton from "./audio";
 
 export default function Bar(monitor: Gdk.Monitor) {
     const { TOP, LEFT, RIGHT } = Astal.WindowAnchor;
@@ -29,9 +26,6 @@ export default function Bar(monitor: Gdk.Monitor) {
                     {
                         // <SysTray />
                     }
-                    <NetworkButton />
-                    <AudioButton />
-                    <BatteryButton />
                     <SystemIndicators />
                 </box>
             </centerbox>

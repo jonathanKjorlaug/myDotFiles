@@ -5,6 +5,11 @@ import PanelButton from "../common/PanelButton";
 import Battery from "gi://AstalBattery";
 import Wp from "gi://AstalWp";
 import Network from "gi://AstalNetwork";
+import PowerProfiles from "gi://AstalPowerProfiles?version=0.1";
+
+import NetworkButton from "./network";
+import BatteryButton from "./battery";
+import AudioButton from "./audio";
 
 import { WINDOW_NAME } from "../Quicksettings/Quicksettings";
 
@@ -27,7 +32,9 @@ export default function () {
                 App.toggle_window(WINDOW_NAME);
             }}
             child=<box cssClasses={["systemIcons"]}>
-                <image iconName={"user-home-symbolic"} />
+                <NetworkButton />
+                <AudioButton />
+                <BatteryButton />
             </box>
         />
     );

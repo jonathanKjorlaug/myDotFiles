@@ -20,29 +20,20 @@ export default function () {
     const powerProfiles = PowerProfiles.get_default();
 
     return (
-        <PanelButton
-            window={WINDOW_NAME}
-            onClicked={() => {
-                App.toggle_window(WINDOW_NAME);
-            }}
-            child=<box cssClasses={["batteryButton"]}>
-                <box
-                    visible={bind(bat, "isPresent")}
-                    cssClasses={["SystemIcon"]}
-                >
-                    <image
-                        iconName={bind(bat, "batteryIconName")}
-                        tooltipText={bind(bat, "timeToEmpty").as(time)}
-                    />
-                </box>
-
-                <box
-                    visible={bind(bat, "isPresent").as((present) => !present)}
-                    cssClasses={["SystemIcon"]}
-                >
-                    <image iconName={bind(powerProfiles, "iconName")} />
-                </box>
+        <box cssClasses={["batteryButton"]}>
+            <box visible={bind(bat, "isPresent")} cssClasses={["SystemIcon"]}>
+                <image
+                    iconName={bind(bat, "batteryIconName")}
+                    tooltipText={bind(bat, "timeToEmpty").as(time)}
+                />
             </box>
-        />
+
+            <box
+                visible={bind(bat, "isPresent").as((present) => !present)}
+                cssClasses={["SystemIcon"]}
+            >
+                <image iconName={bind(powerProfiles, "iconName")} />
+            </box>
+        </box>
     );
 }

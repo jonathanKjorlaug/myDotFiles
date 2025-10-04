@@ -6,11 +6,11 @@ return {
             nixd = {
                 options = {
                     home_manager = {
-                        expr = '(builtins.getFlake "/home/jonathankjorlaug/dotfiles").homeConfigurations.jonathankjorlaug.options',
+                        expr = '(builtins.getFlake "/home/jonathankjorlaug/hmconf").homeConfigurations.jonathankjorlaug.options',
                     },
-                    nixos = {
-                        expr = '(builtins.getFlake "/home/jonathankjorlaug/nixosConfig").nixosConfigurations.captainArcher.options',
-                    },
+                    -- nixos = {
+                    --     expr = '(builtins.getFlake "/home/jonathankjorlaug/nixosConfig").nixosConfigurations.captainArcher.options',
+                    -- },
                 },
             },
 
@@ -44,32 +44,35 @@ return {
                 },
             },
 
-            pylsp = {
-                settings = {
-                    pylsp = {
-                        plugins = {
-                            mccabe = { enabled = false },
-                            pycodestyle = { enabled = false },
-                        },
-                    },
-                },
-            },
-
             ts_ls = {
                 init_options = {
                     plugins = {
                         {
                             name = "@vue/typescript-plugin",
-                            location = "/usr/lib/node_modules/@vue/typescript-plugin",
-                            languages = { "javascript", "typescript", "vue" },
+                            location = "/usr/lib/node_modules/@vue/language-server",
+                            languages = { "vue" },
+                            configNamespace = "typescript",
                         },
                     },
                 },
-                filetypes = {
-                    "javascript",
-                    "typescript",
-                    "vue",
-                    "typescriptreact",
+                filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+            },
+
+            basedpyright = {
+                settings = {
+                    basedpyright = {
+                        analysis = {
+                            autoSearchPaths = true,
+                            diagnosticMode = "openFilesOnly",
+                            useLibraryCodeForTypes = true,
+                            typeCheckingMode = "standard",
+
+                            inlayHints = {
+                                callArgumentNames = true,
+                                variableTypes = false,
+                            },
+                        },
+                    },
                 },
             },
 
@@ -110,6 +113,12 @@ return {
                 },
             },
 
+            qmlls = {
+                cmd = { "qmlls6" },
+            },
+
+            r_language_server = {},
+            vue_ls = {},
             bashls = {},
             jsonls = {},
             hyprls = {},
@@ -117,21 +126,21 @@ return {
             taplo = {},
             cssls = {},
             marksman = {},
+            tailwindcss = {},
+            postgres_lsp = {},
         },
     },
 
     config = function(_, opts)
-        -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-        local lspconfig = require "lspconfig"
         for server, config in pairs(opts.servers) do
-            -- passing config.capabilities to blink.cmp merges with the capabilities in your
-            -- `opts[server].capabilities, if you've defined it
             config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-            lspconfig[server].setup(config)
+
+            vim.lsp.config(server, config)
+            vim.lsp.enable(server)
         end
 
         vim.api.nvim_create_autocmd("LspAttach", {
+
             group = vim.api.nvim_create_augroup("UserLspConfig", {}),
             callback = function(ev)
                 opts.buffer = ev.buf
@@ -163,6 +172,10 @@ return {
 
                 opts.desc = "Restart LSP"
                 vim.keymap.set("n", "<leader>rs", "<cmd>LspRestart<CR>", opts)
+
+                if vim.lsp.inlay_hint then
+                    vim.lsp.inlay_hint.enable(true, { 0 })
+                end
             end,
         })
     end,

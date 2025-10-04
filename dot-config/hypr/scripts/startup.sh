@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+
 ags run --gtk4
 brightnessctl -e
 
